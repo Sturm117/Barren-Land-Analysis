@@ -236,7 +236,7 @@ public class BLA_Farmland {
 		
 		updateBarrenVec(curX1, curBarrenLand);
 		
-		while (curX1 < maxX)
+		while (curX1 <= maxX)
 		{
 			curY1 = 0;
 			curX2 = findNextX(curX1 + isSecondXPass);
@@ -253,10 +253,10 @@ public class BLA_Farmland {
 					fertileLand.add(newFertileLand);
 				}
 				
-				curY1 = curY2;
+				curY1 = curY2 + isSecondYPass;
 			}
 			
-			updateBarrenVec(curX2, curBarrenLand);
+			updateBarrenVec(curX2 + isSecondXPass, curBarrenLand);
 			curX1 = curX2 + 1;
 		}
 	}
@@ -293,7 +293,8 @@ public class BLA_Farmland {
 		assert ((rect2Coord == X2RECT) || (rect2Coord == Y2RECT)) : "Invalid Coordinate: " + rect2Coord.toString();
 		
 		int next = curNext;
-		int axis1 = land.getCoordinate(rect1Coord) - 1;
+		int axis1 = land.getCoordinate(rect1Coord);
+		axis1 -= (axis1 > 0) ? 1 : 0;
 		if (axis1 >= next)
 		{
 			return next;
@@ -306,7 +307,13 @@ public class BLA_Farmland {
 		else
 		{
 			int axis2 = land.getCoordinate(rect2Coord);
-			axis2 += (rect2Coord == Y2RECT) ? 1 : 0;
+			
+			if ((axis1 == curCoord) && (axis1 == axis2))
+			{
+				next = axis1;
+			}
+			
+			axis2 += ((rect2Coord == Y2RECT) && (axis2 < 599)) ? 1 : 0;
 			
 			if ((axis2 < next) && (axis2 > curCoord))
 			{
@@ -328,7 +335,7 @@ public class BLA_Farmland {
 			int y2 = land.getCoordinate(Y2RECT);
 			
 			if (inBetween(coordY1, coordY2, y1) || inBetween(coordY1, coordY2, y2) ||
-					(containedIn(y1, y2, coordY1) && containedIn(y1, y2, coordY2)))
+					containedIn(y1, y2, coordY1) || containedIn(y1, y2, coordY2))
 			{
 				hasClash = true;
 				break;
@@ -354,7 +361,7 @@ public class BLA_Farmland {
 	{
 		boolean containedIn = false;
 		
-		if ((low <= value) && (high >= value))
+		if (((low <= value) && (high >= value)) || ((low == high) && (low == value)))
 		{
 			containedIn = true;
 		}
