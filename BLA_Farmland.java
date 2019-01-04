@@ -328,7 +328,7 @@ public class BLA_Farmland {
 			int y2 = land.getCoordinate(Y2RECT);
 			
 			if (inBetween(coordY1, coordY2, y1) || inBetween(coordY1, coordY2, y2) ||
-					(inBetween(y1, y2, coordY1) && inBetween(y1, y2, coordY2)))
+					(containedIn(y1, y2, coordY1) && containedIn(y1, y2, coordY2)))
 			{
 				hasClash = true;
 				break;
@@ -348,6 +348,18 @@ public class BLA_Farmland {
 		}
 		
 		return inBetween;
+	}
+	
+	private boolean containedIn(int low, int high, int value)
+	{
+		boolean containedIn = false;
+		
+		if ((low <= value) && (high >= value))
+		{
+			containedIn = true;
+		}
+		
+		return containedIn;
 	}
 	
 	private void initializeArrayList(InitializerOptions option, int startValue, ArrayList<Integer> arrList, int size)
