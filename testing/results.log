@@ -1,0 +1,30 @@
+Comparing files ..\TESTING\test1.log.golden and ..\TESTING\TEST1.LOG
+FC: no differences encountered
+
+Comparing files ..\TESTING\test2.log.golden and ..\TESTING\TEST2.LOG
+FC: no differences encountered
+
+Comparing files ..\TESTING\test3.log.golden and ..\TESTING\TEST3.LOG
+FC: no differences encountered
+
+Comparing files ..\TESTING\test4.log.golden and ..\TESTING\TEST4.LOG
+FC: no differences encountered
+
+Comparing files ..\TESTING\test5.log.golden and ..\TESTING\TEST5.LOG
+FC: no differences encountered
+
+Comparing files ..\TESTING\test6.log.golden and ..\TESTING\TEST6.LOG
+FC: no differences encountered
+
+Comparing files ..\TESTING\Invalid_test1.log.golden and ..\TESTING\INVALID_TEST1.LOG
+FC: no differences encountered
+
+Comparing files ..\TESTING\Invalid_test2.log.golden and ..\TESTING\INVALID_TEST2.LOG
+FC: no differences encountered
+
+Comparing files ..\TESTING\Corner_test1.log.golden and ..\TESTING\CORNER_TEST1.LOG
+FC: no differences encountered
+
+Comparing files ..\TESTING\Corner_test2.log.golden and ..\TESTING\CORNER_TEST2.LOG
+FC: no differences encountered
+
